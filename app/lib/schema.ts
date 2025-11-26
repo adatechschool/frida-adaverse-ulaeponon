@@ -17,7 +17,7 @@ export const promoTable = pgTable("prom",{
     slug : varchar("slug",{length:255}).notNull().unique(),
     lienGithub : varchar("lien_github",{length:255}).notNull(),
     lienDemo : varchar("lien_demo",{length:255}).notNull(),
-    id_prom: integer("id_pom").notNull().references(()=>promoTable.id, {onDelete:"cascade"}),
+    id_prom: integer("id_prom").notNull().references(()=>promoTable.id, {onDelete:"cascade"}),
     id_project: integer("id_project").notNull().references(()=>projectTable.id, {onDelete:"cascade"}),
     publishedAt:timestamp("published_at").defaultNow(),
  });
