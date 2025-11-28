@@ -1,7 +1,13 @@
-export default  function projectCard({title, image,}){
+"use client"
+export default  function ProjectCard({project }){
     return(
         <div>
-            <h2>{title}</h2>
+            <span>{project.promoName}</span>
+            <img src= "/default-thumbnail.png" />
+            <h2>{project.title}</h2>
+            <p>
+                Publié le : {new Date(project.publishedAt).toLocaleDateString()}
+            </p>
         </div>
     )
 }

@@ -2,10 +2,26 @@ import { db } from "@/app/lib/db";
 import{ projectTable, promoTable, studentProjectTable } from "@/app/lib/schema";
 import { NextRequest } from "next/server";
 import { eq } from "drizzle-orm";
-export async function GET(){
-    const studentProjects = await db.select().from(studentProjectTable);
-return Response.json(studentProjects);
+export async function GET() {
+  const studentProjects = await db
+    .select({
+      id: studentProjectTable.id,
+      title: studentProjectTable.title,
+      image: studentProjectTable.image,
+      slug: studentProjectTable.slug,
+      lienGithub: studentProjectTable.lienGithub,
+      lienDemo: studentProjectTable.lienDemo,
+      publishedAt: studentProjectTable.publishedAt,
+      promoName: promoTable.promName,
+      projectName: projectTable.projectName,
+    })
+    .from(studentProjectTable)
+   .leftJoin(promoTable, eq(promoTable.id, studentProjectTable.id_prom))
+      .leftJoin(projectTable, eq(projectTable.id, studentProjectTable.id_project));
+
+  return Response.json(studentProjects);
 }
+
 export async function POST(req:NextRequest){
 const body = await req.json();
 const {title,image, slug,lienGithub,lienDemo, promo, projectName} = body;
@@ -31,3 +47,4 @@ const promoRow = await db.select().from(promoTable).where(eq(promoTable.promName
     id_project
    })
 return Response.json(newStudentProject);}
+
