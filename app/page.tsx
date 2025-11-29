@@ -1,4 +1,4 @@
-import ProjectCard from "./components/projectCard";
+import ProjectCard from "./components/ProjectCard";
 import { groupedProject } from "./lib/groupProject";
 
 
