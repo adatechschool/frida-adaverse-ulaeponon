@@ -8,8 +8,6 @@ import { eq, sql } from "drizzle-orm";
 export default async function ProjectTypePage({params}) {
      const {projectType} = await params;
      const decodedProjectType = decodeURIComponent(projectType);
-     console.log("projectType brut:", projectType);
-     console.log("projectType décodé:", decodedProjectType);
       const projects = await db
     .select({
       project: projectTable,
@@ -36,7 +34,7 @@ export default async function ProjectTypePage({params}) {
            title: row.studentProject?.title ?? row.project.projectName,
             promoName: row.promo?.promName ?? "Aucune promo",
             publishedAt: row.studentProject?.publishedAt ?? new Date().toISOString(),
-            image: row.studentProject?.image ?? "/default-thumbnail.png",
+         image: row.studentProject?.image ?? "/default-thumbnail.png",
           }}
         />
     ))}

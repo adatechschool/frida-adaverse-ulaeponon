@@ -13,7 +13,7 @@ export const promoTable = pgTable("prom",{
  export const studentProjectTable = pgTable("student_projects",{
     id: serial("id").primaryKey(),
     title: text("title").notNull(),
-    image : varchar("image",{length:255}).notNull(),
+    image : varchar("image",{length:255}),
     slug : varchar("slug",{length:255}).notNull().unique(),
     lienGithub : varchar("lien_github",{length:255}).notNull(),
     lienDemo : varchar("lien_demo",{length:255}).notNull(),

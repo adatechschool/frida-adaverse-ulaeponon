@@ -15,6 +15,13 @@
       "when": 1764184457223,
       "tag": "0001_adorable_magus",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1764516392997,
+      "tag": "0002_bouncy_gideon",
+      "breakpoints": true
     }
   ]
 }
